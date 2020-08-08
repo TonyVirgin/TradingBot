@@ -11,6 +11,9 @@ class PythonBot:
                 print("Buying stock")
                 self.alpaca.submit_order("MSFT", 1, 'buy', 'market', 'day')
                 # take profit here
+            if bar.close <= bar.open and bar.open - bar.low > 0.1:
+                print("Selling")
+                self.alpaca.submit_order("MSFT", 1, 'sell', 'market', 'day')
 
 bd = PythonBot()
 bd.run()
